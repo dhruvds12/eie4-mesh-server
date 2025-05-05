@@ -146,6 +146,12 @@ func message(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), 400)
 		return
 	}
+
+	if _, err := fsClient.Collection(collectionUsers).Doc(m.Src).Get(r.Context()); err != nil {
+		http.Error(w, "unknown user", http.StatusUnauthorized)
+		return
+	}
+
 	if m.MsgID == "" {
 		m.MsgID = randID()
 	}
