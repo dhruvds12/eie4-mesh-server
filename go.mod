@@ -7,6 +7,7 @@ toolchain go1.24.2
 require (
 	cloud.google.com/go/firestore v1.18.0
 	firebase.google.com/go/v4 v4.15.2
+	github.com/go-chi/chi v1.5.5
 	github.com/go-chi/chi/v5 v5.2.1
 	google.golang.org/api v0.231.0
 )
