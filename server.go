@@ -287,7 +287,7 @@ func syncUser(w http.ResponseWriter, r *http.Request) {
 	// if you want to respect the Since timestamp:
 	if req.Since > 0 {
 		cutoff := time.Unix(req.Since, 0)
-		query = query.Where("tsCreated", ">", cutoff)
+		query = query.Where("tsCreated", ">=", cutoff)
 	}
 	iter := query.Documents(r.Context())
 	for {
