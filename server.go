@@ -257,6 +257,8 @@ func syncUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fsClient.Collection(collectionPres).Doc(req.UserID).Delete(r.Context())
+
 	// ensure this user is registered
 	if _, err := fsClient.Collection(collectionUsers).Doc(req.UserID).Get(r.Context()); err != nil {
 		http.Error(w, "unknown user", http.StatusUnauthorized)
